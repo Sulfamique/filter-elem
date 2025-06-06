@@ -25,6 +25,13 @@ class Filter_Elem {
     private static $instance = null;
 
     /**
+     * Admin handler instance.
+     *
+     * @var Filter_Elem_Admin
+     */
+    private $admin;
+
+    /**
      * Plugin version.
      */
     const VERSION = '1.0.0';
@@ -47,6 +54,10 @@ class Filter_Elem {
     private function __construct() {
         add_action( 'init', array( $this, 'load_textdomain' ) );
         add_action( 'elementor/widgets/register', array( $this, 'register_widgets' ) );
+
+        require_once __DIR__ . '/includes/class-filter-elem-admin.php';
+        $this->admin = new Filter_Elem_Admin();
+        $this->admin->hooks();
     }
 
     /**
