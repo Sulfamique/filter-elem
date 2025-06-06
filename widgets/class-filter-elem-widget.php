@@ -181,4 +181,3 @@ class Filter_Elem_Widget extends Widget_Base {
         return $options;
     }
 }
-
